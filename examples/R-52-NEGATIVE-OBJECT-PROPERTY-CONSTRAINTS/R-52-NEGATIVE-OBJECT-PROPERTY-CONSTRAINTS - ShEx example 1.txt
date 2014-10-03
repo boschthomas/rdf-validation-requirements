@@ -13,25 +13,38 @@
 
 # constraints
 # -----
-    :organizationDescriptionTemplate
-        a dsp:DescriptionTemplate ;
-        dsp:minOccur "1"^^xsd:nonNegativeInteger ; 
-        dsp:maxOccur "infinity"^^xsd:string ; 
-        dsp:resourceClass oer:Organization ; 
-        dsp:statementTemplate [
-            a dsp:NonLiteralStatementTemplate ;
-            dsp:minOccur "1"^^xsd:nonNegativeInteger ; 
-            dsp:maxOccur "infinity"^^xsd:string ; 
-            dsp:property oer:name ] .
+<FeelingForce> {
+    :feelingForce (true) ,
+    :attitute xsd:string }
+<JediMentor> {
+    :feelingForce (true) ,
+    :attitute ('good') ,
+    :laserSwordColor xsd:string ,
+    :numberLaserSwords xsd:nonNegativeInteger ,
+    :mentorOf @<JediStudent> ,
+   !:studentOf @<JediMentor> }
+<JediStudent> {
+    :feelingForce (true) ,
+    :attitute ('good') ,
+    :laserSwordColor xsd:string ,
+    :numberLaserSwords xsd:nonNegativeInteger ,
+   !:mentorOf @<JediStudent> ,
+    :studentOf @<JediMentor> }
 
-# valid data
+# individual matching 'FeelingForce' and 'JediMentor' data shapes
 # -----
-ex:dcmi 
-    rdf:type oer:Organization ;
-    oer:name "Dublin Core Metadata Initiative" .
+:Obi-Wan 
+    :feelingForce true ;
+    :attitute 'good' ;
+    :laserSwordColor 'blue' ;
+    :numberLaserSwords '1'^^xsd:nonNegativeInteger ;
+    :mentorOf :Anakin .
 
-# triples needed for validation:
-# - automatically infered in future versions
-# - as every OWL individual is a owl:Thing
+# individual matching 'FeelingForce' and 'JediStudent' data shapes
 # -----
-ex:dcmi  rdf:type owl:Thing .
+:Anakin 
+    :feelingForce true ;
+    :attitute 'good' ;
+    :laserSwordColor 'blue' ;
+    :numberLaserSwords '1'^^xsd:nonNegativeInteger ;
+    :studentOf :Obi-Wan .
