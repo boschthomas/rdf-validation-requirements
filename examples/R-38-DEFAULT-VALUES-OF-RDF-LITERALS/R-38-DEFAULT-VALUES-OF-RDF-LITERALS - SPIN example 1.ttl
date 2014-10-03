@@ -1,0 +1,32 @@
+# namespace declarations
+# -----
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix sp:       <http://spinrdf.org/sp#> .
+@prefix spin:     <http://spinrdf.org/spin#> .
+
+# constraints
+# -----
+owl:Thing
+    spin:rule [
+        a sp:Construct ;
+            sp:text """
+                CONSTRUCT {            
+                    ?this :laserSwordColor "blue"^^xsd:string ;
+                    ?this :numberLaserSwords "1"^^xsd:nonNegativeInteger . 
+                }
+                WHERE {             
+                    ?this a :Jedi .            
+                } """ ; ] .
+
+# data
+# -----
+:Joda a :Jedi .
+
+# inferred triples
+# -----
+:Joda 
+    :laserSwordColor "blue"^^xsd:string ;
+    :numberLaserSwords "1"^^xsd:nonNegativeInteger .
