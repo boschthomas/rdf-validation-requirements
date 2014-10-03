@@ -1,0 +1,37 @@
+# namespace declarations
+# -----
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> . 
+@prefix oer:      <http://www.example.org/oer#> .
+@prefix ex:       <http://www.example.org/ex#> .
+@prefix foaf:     <http://xmlns.com/foaf/0.1/#> .
+@prefix dcam:     <http://purl.org/dc/dcam#> .
+@prefix dsp:      <http://dublincore.org/dc-dsp#> .
+@prefix :         <http://dublincore.org/dc-dsp/ex#> .
+
+# constraints
+# -----
+    :organizationDescriptionTemplate
+        a dsp:DescriptionTemplate ;
+        dsp:minOccur "1"^^xsd:nonNegativeInteger ; 
+        dsp:maxOccur "infinity"^^xsd:string ; 
+        dsp:resourceClass oer:Organization ; 
+        dsp:statementTemplate [
+            a dsp:NonLiteralStatementTemplate ;
+            dsp:minOccur "1"^^xsd:nonNegativeInteger ; 
+            dsp:maxOccur "infinity"^^xsd:string ; 
+            dsp:property oer:name ] .
+
+# valid data
+# -----
+ex:dcmi 
+    rdf:type oer:Organization ;
+    oer:name "Dublin Core Metadata Initiative" .
+
+# triples needed for validation:
+# - automatically infered in future versions
+# - as every OWL individual is a owl:Thing
+# -----
+ex:dcmi  rdf:type owl:Thing .
