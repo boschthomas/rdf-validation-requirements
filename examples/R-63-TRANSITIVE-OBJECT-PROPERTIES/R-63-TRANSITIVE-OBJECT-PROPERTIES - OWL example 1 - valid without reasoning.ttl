@@ -14,14 +14,10 @@
 # valid data
 # -----
 :Carter
-	:ancestorOf :Lois .
+	:ancestorOf :Lois ; 
+	:ancestorOf :Meg .
 :Lois
-    :ancestorOf :Meg .
-	
-# inferred data
-# -----
-# :Carter
-#     :ancestorOf :Meg .
+	:ancestorOf :Meg .
 
 # triples needed for validation:
 # - automatically inferred in future versions
@@ -33,13 +29,3 @@
 	a owl:Thing . 
 :Meg
 	a owl:Thing . 
-	
-# triples needed for reasoning:
-# - automatically inferred in future versions
-# -----
-:Carter
-	a owl2spin:ToInfer .
-:Lois
-	a owl2spin:ToInfer . 
-:Meg
-	a owl2spin:ToInfer . 
