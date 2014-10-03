@@ -1,18 +1,8 @@
-# namespace declarations
-# -----
-@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
-@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix owl:      <http://www.w3.org/2002/07/owl#> . 
-@prefix oer:      <http://www.example.org/oer#> .
-@prefix ex:       <http://www.example.org/ex#> .
-@prefix foaf:     <http://xmlns.com/foaf/0.1/#> .
-@prefix dcam:     <http://purl.org/dc/dcam#> .
-@prefix dsp:      <http://dublincore.org/dc-dsp#> .
-@prefix :         <http://dublincore.org/dc-dsp/ex#> .
-
 # constraints
 # -----
+PREFIX : <http://force.example/#ns>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
 <FeelingForce> {
     :feelingForce (true) ,
     :attitute xsd:string }
@@ -31,8 +21,12 @@
    !:mentorOf @<JediStudent> ,
     :studentOf @<JediMentor> }
 
-# individual matching 'FeelingForce' and 'JediMentor' data shapes
+# data
 # -----
+PREFIX : <http://force.example/#ns>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+# individual matching 'FeelingForce' and 'JediMentor' data shapes
 :Obi-Wan 
     :feelingForce true ;
     :attitute 'good' ;
@@ -41,7 +35,6 @@
     :mentorOf :Anakin .
 
 # individual matching 'FeelingForce' and 'JediStudent' data shapes
-# -----
 :Anakin 
     :feelingForce true ;
     :attitute 'good' ;
