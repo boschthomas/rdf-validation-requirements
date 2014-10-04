@@ -1,0 +1,26 @@
+# constraints
+# -----
+SELECT ?s WHERE { 
+    ?s %%P1%% ?v1 .
+    ?s %%P2%% ?v2 .
+    FILTER ( ?v1 %%OP%% ?v2 ) }
+
+# test binding
+# -----
+dbo:deathDate < dbo:birthDate
+
+P1 => dbo:deathDate
+P2 => dbo:birthDate
+OP => <
+	
+# valid data
+# -----
+:AlbertEinstein
+    dbo:birthDate '1879-03-14'^^xsd:date ;
+    dbo:deathDate '1955-04-18'^^xsd:date .
+	
+# invalid data
+# -----
+:NeilArmstrong
+    dbo:birthDate '2012-08-25'^^xsd:date ;
+    dbo:deathDate '1930-08-05'^^xsd:date .
